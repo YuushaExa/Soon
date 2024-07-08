@@ -8,10 +8,9 @@ reduceCollectTimeButton.addEventListener('click', () => {
             const currentMine = mines[index];
             if (!currentMine.collecting) {
                 currentMine.timeToCollect /= 10;
-                index++;
-            } else {
-                setTimeout(reduceMineCollectTime, 1000);
             }
+            index++;
+            setTimeout(reduceMineCollectTime, 1000); // Check every second for the next mine
         }
     }
 
