@@ -1,20 +1,11 @@
+// Create a button element in the HTML for reducing collect time
 const reduceCollectTimeButton = document.createElement('button');
 reduceCollectTimeButton.textContent = 'Reduce Collect Time x10';
 reduceCollectTimeButton.addEventListener('click', () => {
-    let index = 0;
-
-    function reduceMineCollectTime() {
-        if (index < mines.length) {
-            const currentMine = mines[index];
-            if (!currentMine.collecting) {
-                currentMine.timeToCollect /= 10;
-            }
-            index++;
-            setTimeout(reduceMineCollectTime, 1000); // Check every second for the next mine
-        }
-    }
-
-    reduceMineCollectTime();
+    mines.forEach(mine => {
+        mine.timeToCollect /= 10;
+    });
 });
 
+// Append the button to the body of the HTML document
 document.body.appendChild(reduceCollectTimeButton);
