@@ -25,15 +25,20 @@
             drawText(increaseText, x + 10, y + 60, 'white', 16);
         }
 
- function drawProgressBar(x, y, width, height, progress) {
+function drawProgressBar(x, y, width, height, progress) {
     const maxWidth = canvas.width - x - 10; // Adjust the padding as needed
     const barWidth = Math.min(width * progress, maxWidth);
+
+    barWidth = Math.min(barWidth, width);
+
+    barWidth = Math.max(barWidth, 0);
 
     ctx.fillStyle = '#555';
     ctx.fillRect(x, y, width, height);
     ctx.fillStyle = '#00ff00';
     ctx.fillRect(x, y, barWidth, height);
 }
+
 
         function updateUI(timestamp) {
             const deltaTime = (timestamp - lastTimestamp) / 1000;
